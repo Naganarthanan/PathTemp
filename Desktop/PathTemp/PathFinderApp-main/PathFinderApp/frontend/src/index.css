@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Montserrat:wght@500;700&display=swap");
+@import "tailwindcss"; 
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* Full height root */
+html, body, #root { min-height: 100%; }
+
+html, body {
+  @apply font-sans; /* or font-heading */
+}
+
+/* @layer base {
+  body, h1, h2, h3, h4, h5, h6,
+  p, span, div, a, li, ul, ol,
+  button, input, textarea, select, option,
+  label, small, strong, b, i {
+    @apply font-english;
+  }
+} */
+
+/* Page background driven by CSS var */
+.bg-page {
+  position: relative;
+  isolation: isolate; /* make a stacking context */
+  min-height: 100vh;
+}
+.bg-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: var(--page-bg, none);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.bg-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 600px at 15% 10%, rgba(45,226,230,0.08), transparent 60%),
+    radial-gradient(900px 500px at 85% 20%, rgba(255,110,199,0.08), transparent 60%);
+  z-index: 0;
+}
+
+/* Make Toasts overlay everything */
+.Toastify__toast-container { z-index: 999999 !important; }
